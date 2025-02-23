@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerold - Tailwind Website</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Preloader styles */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0F172A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .preloader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .preloader span {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4d4943;
+            animation: blink 1.5s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0.3;
+            }
+        }
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding-left: 3rem;
+                padding-right: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .container {
+                padding-left: 4rem;
+                padding-right: 4rem;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-[#190329] font-sans text-white">
+
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <span>L o a d i n g...</span>
+    </div>
+
+    <!-- Navbar -->
+    <nav id="navbar" class="p-4 fixed w-full z-50 transition-all bg-transparent backdrop-blur-md bg-opacity-0">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-secondary text-2xl font-bold">SHAKIB</a>
+
+            <!-- Sidebar Toggle Button for Mobile -->
+            <button id="menu-toggle" class="md:hidden text-white text-2xl focus:outline-none">
+                ☰
+            </button>
+
+            <!-- Navbar for larger screens -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="text-white hover:text-secondary transition">Home</a>
+                <a href="#about" class="text-white hover:text-secondary transition">About</a>
+               
+                <a href="#portfolio" class="text-white hover:text-secondary transition">Portfolio</a>
+                
+                <a href="#contact" class="text-white hover:text-secondary transition">Contact</a>
+                <button class="btn bg-purple-950 px-4 font-semibold py-2 border-stroke border rounded-full">Hire Me</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sidebar (Mobile) -->
+    <div id="sidebar" class="fixed inset-y-0 left-0 w-64 bg-[#190329] transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden flex flex-col z-50 shadow-lg">
+        <button id="close-sidebar" class="text-white text-2xl p-4 self-end">✖</button>
+
+        <div class="flex flex-col space-y-4 text-white p-6">
+            <a href="#home" class="hover:text-secondary transition">Home</a>
+            <a href="#about" class="hover:text-secondary transition">About</a>
+            <a href="#services" class="hover:text-secondary transition">Services</a>
+            <a href="#portfolio" class="hover:text-secondary transition">Portfolio</a>
+            <a href="#blog" class="hover:text-secondary transition">Blog</a>
+            <a href="#contact" class="hover:text-secondary transition">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class=" md:relative md:inset-y-0  overflow-hidden">
+        <!-- Background Effect -->
+        <div class="absolute md:top-0 right-0 w-80 h-80 blur-[150px] rounded-full bg-gradient-circle -z-1 -mt-5 -mr-5"></div>
+
+        <div class="container mx-auto">
+            <div class="flex flex-col-reverse md:flex-row items-center gap-8 pt-20">
+                <div>
+                    <h4 class="text-lg md:text-xl lg:text-2xl font-bold mb-2">I am SHAKIB</h4>
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold   leading-tight mb-4">
+                        Next-Level Web <br> Developer.
+                    </h1>
+                    <p class="text-lg  max-w-xl mb-6">
+                        I break down complex user experience problems to create integrity-focused solutions that connect billions of people.
+                    </p>
+
+                    <!-- Buttons & Social Links -->
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a href="#" class="px-6 py-3 text-lg font-medium text-primary border border-primary rounded-full transition-all hover:bg-primary hover:text-white">Download CV</a>
+                        <div class="flex gap-3">
+                            <a href="#" class="w-10 h-10 flex items-center justify-center border border-primary rounded-full text-primary transition hover:bg-primary hover:text-white">
+                                <i class="fa-brands fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center border border-primary rounded-full text-primary transition hover:bg-primary hover:text-white">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 flex items-center justify-center border border-primary rounded-full text-primary transition hover:bg-primary hover:text-white">
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Section -->
+                <div class="flex justify-center relative">
+                    <img src="./men.png" alt="shakib's image" class="rounded-3xl border-2 border-secondary hover:border-primary transition-transform rotate-3 hover:rotate-0 w-4/5 md:w-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <div id="about" class="py-20  text-center fade-in ">
+        
+    </div>
+    <div class="text-center">
+        <h2 class="text-3xl font-bold ">About Us</h2>
+        <p class="mt-4 max-w-2xl mx-auto ">We specialize in modern business solutions to help you grow and succeed in the digital world.</p>
+    </div>
+    <section id="skills">
+        <div class="pt-60px pb-60px md:pt-20 md:pb-60px lg:pt-100px lg:pb-20">
+          <div class="container">
+            <!-- section heading -->
+            <div class="text-center flex flex-col items-center mb-10 md:mb-50px">
+              <h2 class="text-3xl md:text-size-35 lg:text-size-40 xl:text-size-45 bg-gradient-text-light dark:bg-gradient-text bg-clip-text xl:leading-1.2  font-medium mb-[15px]">
+                My Skills
+              </h2>
+              <p class="text-primary-color-light dark:text-body-color max-w-700px">
+                We put your ideas and thus your wishes in the form of a unique
+                web project that inspires you and you customers.
+              </p>
+            </div>
+            <!-- skills -->
+            <div class="skills">
+                <!-- Custom container for responsiveness -->
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                  <div class="flex flex-wrap items-center justify-center gap-5">
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".3s" style="visibility: visible; animation-delay: 0.3s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border group-hover:border-purple-100 group-hover:bg-black/10 transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/figma.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          92%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">Figma</p>
+                    </div>
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border-transparent group-hover:border-primary-color group-hover:bg-seondary-color transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/sketch.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          80%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">Sketch</p>
+                    </div>
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border-transparent group-hover:border-primary-color group-hover:bg-seondary-color transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/xd.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          85%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">XD</p>
+                    </div>
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border-transparent group-hover:border-primary-color group-hover:bg-seondary-color transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/wp.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          99%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">WordPress</p>
+                    </div>
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".7s" style="visibility: visible; animation-delay: 0.7s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border-transparent group-hover:border-primary-color group-hover:bg-seondary-color transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/react.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          89%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">React</p>
+                    </div>
+                    <!-- skills single -->
+                    <div class="max-w-[180px] w-full group wow fadeInUp" data-wow-delay=".8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInUp;">
+                      <!-- contents -->
+                      <div class="flex flex-col items-center py-[25px] px-[15px] md:pt-[30px] 2xl:pt-10 2xl:mb-30px rounded-[25px] bg-cream-light-color dark:bg-primary-color-light border border-transparent group-hover:border-primary-color group-hover:bg-seondary-color transition-all duration-500 mb-15px">
+                        <div class="mb-5 md:mb-30px mx-9 2xl:mx-44px w-[60px] flex flex-col justify-center items-center">
+                          <img class="grayscale-[90%] group-hover:grayscale-0 transition-all duration-500 group-hover:scale-110 opacity-50 group-hover:opacity-100 w-[60px]" src="./assets/img/icons/js.png" alt="">
+                        </div>
+                        <div class="text-xl text-gray-color-2 group-hover:text-primary-color transition-none duration-300 font-extrabold">
+                          93%
+                        </div>
+                      </div>
+                      <p class="text-primary-color text-center">JavaScript</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+          </div>
+        </div>
+      </section>    
+    <!-- Services Section -->
+    <div id="service" class="py-20  text-center ">
+        <h2 class="text-3xl font-bold ">Our Services</h2>
+        <div class="mt-6 flex flex-wrap justify-center gap-6">
+            <div class=" p-6 shadow-lg rounded-lg w-80 hover:shadow-2xl transition">
+                <h3 class="text-xl font-semibold text-secondary">Web Development</h3>
+                <p class="mt-2 text-gray-600">Creating modern and responsive websites tailored to your needs.</p>
+            </div>
+            <div class=" p-6 shadow-lg rounded-lg w-80 hover:shadow-2xl transition">
+                <h3 class="text-xl font-semibold text-secondary">Digital Marketing</h3>
+                <p class="mt-2 text-gray-600">Boost your online presence with SEO, social media, and paid ads.</p>
+            </div>
+            <div class=" p-6 shadow-lg rounded-lg w-80 hover:shadow-2xl transition">
+                <h3 class="text-xl font-semibold text-secondary">Graphic Design</h3>
+                <p class="mt-2 text-gray-600">Stunning visuals that capture attention and elevate your brand.</p>
+            </div>
+        </div>
+    </div>
+  
+  
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center p-4">
+        <p>&copy; 2025 Shakib. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuToggle = document.getElementById("menu-toggle");
+            const closeSidebar = document.getElementById("close-sidebar");
+            const sidebar = document.getElementById("sidebar");
+
+            // Open Sidebar
+            menuToggle.addEventListener("click", function () {
+                sidebar.classList.remove("-translate-x-full");
+                sidebar.classList.add("translate-x-0");
+            });
+
+            // Close Sidebar
+            closeSidebar.addEventListener("click", function () {
+                sidebar.classList.remove("translate-x-0");
+                sidebar.classList.add("-translate-x-full");
+            });
+
+            // Scroll behavior for navbar background change
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+
+                if (window.scrollY > 50) {
+                    navbar.classList.add('bg-opacity-90'); // Change opacity when scrolled down
+                } else {
+                    navbar.classList.remove('bg-opacity-90'); // Reset opacity when at the top
+                }
+            });
+
+            // Preloader script
+            setTimeout(() => {
+                document.getElementById('preloader').classList.add('hidden');
+            }, 2000); // 2 seconds delay
+        });
+    </script>
+</body>
+
+</html>
